@@ -1,0 +1,58 @@
+// Proto Version:
+syntax = "proto3";
+// Package Name:
+package sol;
+// Imports:
+import "gogo/protobuf/gogoproto/gogo.proto";
+// GoGo Proto Options:
+option (gogoproto.equal_all) = true;
+option (gogoproto.goproto_stringer_all) = false;
+option (gogoproto.gostring_all) = true;
+option (gogoproto.marshaler_all) = true;
+option (gogoproto.sizer_all) = true;
+option (gogoproto.stringer_all) =  true;
+option (gogoproto.unmarshaler_all) = true;
+option (gogoproto.verbose_equal_all) = true;
+option (gogoproto.populate_all) = true;
+option (gogoproto.testgen_all) = true;
+// Description: 
+
+
+message StructDef {
+  string Name = 1;
+  string Description = 2;
+
+  message FieldDef {
+    string Name = 1;
+    
+    enum FieldTypeDef {
+      STRING = 0;
+      BYTES = 1;
+      INT64 = 2;
+      FLOAT = 3;
+      BOOL = 4;
+      LIST_STRING = 5;
+      LIST_BYTES = 6;
+      LIST_INT64 = 7;
+      LIST_FLOAT = 8;
+      LIST_BOOL = 9;
+    }
+    FieldTypeDef Type = 2;
+    // Human-readable description.
+    string Description = 3;
+    // Whether this attribute is required.
+    bool Required = 4;
+  }
+  repeated FieldDef Fields = 3;
+  StructDeprecationDef Deprecation = 4;
+
+};
+
+message StructDeprecationDef {
+  int32 Version = 1;
+  string Explanation = 2;
+};
+
+message StructListDef {
+  repeated StructDef Structs = 1;
+};

@@ -1,0 +1,37 @@
+// Proto Version:
+syntax = "proto3";
+// Package Name:
+package sol;
+// Imports:
+import "gogo/protobuf/gogoproto/gogo.proto";
+// GoGo Proto Options:
+option (gogoproto.equal_all) = true;
+option (gogoproto.goproto_stringer_all) = false;
+option (gogoproto.gostring_all) = true;
+option (gogoproto.marshaler_all) = true;
+option (gogoproto.sizer_all) = true;
+option (gogoproto.stringer_all) =  true;
+option (gogoproto.unmarshaler_all) = true;
+option (gogoproto.verbose_equal_all) = true;
+option (gogoproto.populate_all) = true;
+option (gogoproto.testgen_all) = true;
+// Description:
+
+
+message FieldValueDef {
+  message ListValueDef {
+    repeated string string = 1;
+    repeated bytes bytes = 2;
+    repeated int64 int64 = 3 [packed = true];
+    repeated float float = 4 [packed = true];
+    repeated bool bool = 5 [packed = true];
+  }
+  oneof Value {
+    string string = 1;
+    bytes byte = 2;
+    int64 int = 3;
+    float float = 4;
+    bool bool = 5;
+    ListValueDef list = 6;
+  }
+}

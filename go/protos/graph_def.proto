@@ -1,0 +1,25 @@
+// Proto Version:
+syntax = "proto3";
+// Package Name:
+package sol;
+// Imports:
+import "node_def.proto";
+import "version_def.proto";
+import "gogo/protobuf/gogoproto/gogo.proto";
+// GoGo Proto Options:
+option (gogoproto.equal_all) = true;
+option (gogoproto.goproto_stringer_all) = false;
+option (gogoproto.gostring_all) = true;
+option (gogoproto.marshaler_all) = true;
+option (gogoproto.sizer_all) = true;
+option (gogoproto.stringer_all) =  true;
+option (gogoproto.unmarshaler_all) = true;
+option (gogoproto.verbose_equal_all) = true;
+option (gogoproto.populate_all) = true;
+option (gogoproto.testgen_all) = true;
+// Description:
+
+message GraphDef {
+  repeated NodeDef node = 1;
+  VersionDef versions = 2;
+};
