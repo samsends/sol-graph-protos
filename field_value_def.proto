@@ -1,0 +1,29 @@
+// Proto Version:
+syntax = "proto3";
+// Package Name:
+package sol;
+// Proto Options:
+option cc_enable_arenas = true;
+option java_outer_classname = "FieldValueProtos";
+option java_multiple_files = true;
+option java_package = "org.solvc.core";
+// Description:
+
+
+message FieldValueDef {
+  message ListValueDef {
+    repeated string string = 1;
+    repeated bytes bytes = 2;
+    repeated int64 int64 = 3 [packed = true];
+    repeated float float = 4 [packed = true];
+    repeated bool bool = 5 [packed = true];
+  }
+  oneof Value {
+    string string = 1;
+    bytes byte = 2;
+    int64 int = 3;
+    float float = 4;
+    bool bool = 5;
+    ListValueDef list = 6;
+  }
+}
